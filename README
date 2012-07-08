@@ -1,0 +1,2 @@
+C2N is a small compiler. It compiles C source code file to NASM code file. 
+Now it's still under development.
