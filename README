@@ -1,2 +1,2367 @@
 C2N is a small compiler. It compiles C source code file to NASM code file. 
 Now it's still under development.
+
+D:\GitHub\c2n>make
+gcc -g stack.c symtab.c num.c main.c Geni386.c insnsa.c -o c2n.exe
+
+D:\GitHub\c2n>c2n t1.c
+mytest:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x2c
+                 
+	MOV	WORD [EBP-42],0xfff
+	MOV	WORD [EBP-44],0xfff
+	MOV	DWORD [EBP-24],0x1
+	MOV	DWORD [EBP-24],0x1
+	LEA	EAX,[EBP-2]
+	ADD	EAX,[EBP-24]
+	MOV	BYTE [EAX], 0x61
+	MOV	BYTE [EBP-1],0x61
+	MOV	BYTE [EBP-5],0x30
+	LEA	EAX,[EBP-20]
+	ADD	EAX,[EBP-24]
+	MOV	BYTE [EAX], 0x31
+	MOV	DWORD [EBP-32],0xdeadeaf
+	MOV	DWORD [EBP-36],0x1234567
+	LEA	EAX,[EBP-36]
+	MOV	[EBP-40],EAX
+	MOV	EAX,[EBP-40]
+	MOV	DWORD [EAX],0xaaa
+	MOV	EAX,[EBP-40]
+	MOV	DWORD [EAX+4],0xbbb
+	MOV	EAX,[EBP-40]
+	MOV	BYTE [EAX+8],0x30
+	MOV	EAX,[EBP-40]
+	MOV	BYTE [EAX+8],0x31
+	LEAVE
+	RET
+
+haha:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x1c
+                 
+	MOV	DWORD [EBP-4],0xdeadbeaf
+	MOV	EAX,[EBP-8]
+	MOV	[EBP-4],EAX
+	MOV	EAX,[EBP-16]
+	MOV	[EBP-4],EAX
+	MOV	EAX,[EBP-8]
+	MOV	[EBP-12],EAX
+	MOV	EAX,[EBP-4]
+	MOV	[EBP-16],EAX
+	MOV	DWORD [EBP-4],0xdeadbeaf
+	MOVSX	EAX,WORD [EBP-18]
+	MOV	[EBP-4],EAX
+	MOVSX	EAX,WORD [EBP-20]
+	MOV	[EBP-12],EAX
+	MOVZX	EAX,WORD [EBP-22]
+	MOV	[EBP-12],EAX
+	MOVZX	EAX,WORD [EBP-22]
+	MOV	[EBP-4],EAX
+	MOVSX	EAX,BYTE [EBP-25]
+	MOV	[EBP-4], EAX
+	MOVSX	EAX,BYTE [EBP-26]
+	MOV	[EBP-12], EAX
+	MOVZX	EAX,BYTE [EBP-27]
+	MOV	[EBP-12], EAX
+	MOVZX	EAX,BYTE [EBP-27]
+	MOV	[EBP-4], EAX
+	MOVSX	AX,BYTE [EBP-25]
+	MOV	[EBP-18],AX
+	MOVSX	AX,BYTE [EBP-26]
+	MOV	[EBP-22],AX
+	MOVZX	AX,BYTE [EBP-27]
+	MOV	[EBP-22],AX
+	MOVZX	AX,BYTE [EBP-27]
+	MOV	[EBP-18],AX
+	MOVZX	EAX,BYTE [EBP-26]
+	MOV	[EBP-25],AL
+	MOVZX	EAX,BYTE [EBP-27]
+	MOV	[EBP-26],AL
+	MOVZX	EAX,BYTE [EBP-28]
+	MOV	[EBP-27],AL
+	MOVZX	EAX,BYTE [EBP-25]
+	MOV	[EBP-27],AL
+	MOV	EAX,[EBP-20]
+	MOV	[EBP-18],AX
+	MOVZX	EAX,WORD [EBP-18]
+	MOV	[EBP-22],AX
+	MOV	EAX,[EBP-24]
+	MOV	[EBP-18],AX
+	MOVZX	EAX,WORD [EBP-22]
+	MOV	[EBP-24],AX
+	MOV	DWORD [EBP-4],0xdeadbeaf
+	MOV	EAX,[EBP-4]
+	MOV	[EBP-25],AL
+	MOV	EAX,[EBP-12]
+	MOV	[EBP-25],AL
+	MOV	EAX,[EBP-4]
+	MOV	[EBP-27],AL
+	MOV	EAX,[EBP-12]
+	MOV	[EBP-27],AL
+	MOV	EAX,[EBP-4]
+	MOV	[EBP-18],AX
+	MOV	EAX,[EBP-12]
+	MOV	[EBP-18],AX
+	MOV	EAX,[EBP-4]
+	MOV	[EBP-22],AX
+	MOV	EAX,[EBP-12]
+	MOV	[EBP-22],AX
+	MOV	DWORD [EBP-4],0xdeadbeaf
+	MOVZX	EAX,WORD [EBP-18]
+	MOV	[EBP-25],AL
+	MOVZX	EAX,WORD [EBP-18]
+	MOV	[EBP-27],AL
+	MOVZX	EAX,WORD [EBP-22]
+	MOV	[EBP-25],AL
+	MOVZX	EAX,WORD [EBP-22]
+	MOV	[EBP-27],AL
+	LEAVE
+	RET
+
+haha2:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0xc
+                  
+	MOV	EAX,[EBP-8]
+	MOV	[EBP-11],AL
+	MOV	EAX,[EBP-4]
+	MOV	[EBP-10],AX
+	MOV	EAX,[EBP-4]
+	MOV	[EBP-11],AL
+	MOV	EAX,[EBP-8]
+	MOV	[EBP-10],AX
+	MOVSX	EAX,WORD [EBP-10]
+	MOV	[EBP-8],EAX
+	MOVSX	EAX,BYTE [EBP-11]
+	MOV	[EBP-8], EAX
+	MOVSX	EAX,WORD [EBP-10]
+	MOV	[EBP-4],EAX
+	MOVSX	EAX,BYTE [EBP-11]
+	MOV	[EBP-4], EAX
+	LEAVE
+	RET
+
+func:
+	PUSH	EBP
+	MOV	EBP,ESP
+                               
+	POP	EBP
+	RET
+
+func2:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x14
+                 
+	MOV	EAX,[EBP-16]
+	MOV	[EBP-8],EAX
+	MOV	EAX,[EBP-12]
+	MOV	[EBP-4],EAX
+	MOVZX	EAX,BYTE [EBP-17]
+	MOV	[EBP-4],AL
+	MOVSX	EAX,BYTE [EBP-17]
+	MOV	[EBP-8], EAX
+	LEAVE
+	RET
+
+func3:
+	PUSH	EBP
+	MOV	EBP,ESP
+                               
+	MOV	DWORD [EBP+8],0x1
+	MOV	EAX,[EBP+12]
+	ADD	EAX,7
+	MOV	BYTE [EAX], 0x2
+	MOV	BYTE [EBP+16],0x63
+	POP	EBP
+	RET
+
+func4:
+	PUSH	EBP
+	MOV	EBP,ESP
+                               
+	MOV	DWORD [EBP+8],0x1
+	MOV	BYTE [EBP+12],0x30
+	MOV	WORD [EBP+13],0x2
+	MOV	BYTE [EBP+15],0x63
+	POP	EBP
+	RET
+
+func5:
+	PUSH	EBP
+	MOV	EBP,ESP
+                               
+	MOV	DWORD [EBP+8],0x9
+	MOV	EAX,[EBP+8]
+	MOV	[EBP+20],AL
+	MOV	BYTE [EBP+20],0x61
+	MOV	DWORD [EBP+24],0x1
+	POP	EBP
+	RET
+
+func6:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+	MOV	BYTE [EBP+12],0x61
+	MOV	DWORD [EBP+16],0x1
+	MOV	EAX,[EBP-4]
+	ADD	EAX,2
+	MOV	BYTE [EAX], 0x78
+	LEA	EAX,[EBP-5]
+	ADD	EAX,3
+	MOV	BYTE [EAX], 0x79
+	MOV	EAX,[EBP+8]
+	ADD	EAX,5
+	MOV	BYTE [EAX], 0x0
+	LEAVE
+	RET
+
+func7:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x2c
+                 
+	MOV	EAX,[EBP-4]
+	ADD	EAX,2
+	MOV	BYTE [EAX], 0xff
+	MOV	EAX,[EBP-4]
+	ADD	EAX,2
+	MOVZX	EBX,BYTE [EAX]
+	MOV	[EBP-41],BL
+	LEAVE
+	RET
+
+func8:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x30
+                 
+	MOV	EAX,[EBP-4]
+	ADD	EAX,16
+	MOV	EBX,[EAX]
+	MOV	[EBP-48],EBX
+	MOV	EBX,[EAX+4]
+	MOV	[EBP-44],EBX
+	LEAVE
+	RET
+
+func9:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x5748
+               
+	PUSH	ECX
+	PUSH	EAX
+	PUSH	ESI
+	PUSH	EDI
+	MOV	ECX,2793
+	MOV	ESI,[EBP-22344]
+	MOV	EDI,[EBP-11172]
+L1:
+	MOV	EAX,[ESI]
+	MOV	[EDI],EAX
+	ADD	EDI,4
+	ADD	ESI,4
+	DEC	ECX
+	JNZ	L1
+	POP	EDI
+	POP	ESI
+	POP	EAX
+	POP	ECX
+	LEAVE
+	RET
+
+ffff:
+	PUSH	EBP
+	MOV	EBP,ESP
+                               
+	POP	EBP
+	RET
+
+func10:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x40
+                 
+	MOV	EAX,[EBP-12]
+	MOVZX	EBX,BYTE [EBP-41]
+	MOV	[EAX],BL
+	MOV	EAX,[EBP-8]
+	MOVZX	EBX,BYTE [EBP-41]
+	MOV	[EAX],BL
+	MOV	EAX,[EBP-4]
+	MOVZX	EBX,BYTE [EBP-41]
+	MOV	[EAX],BL
+	MOV	DWORD [EBP-48],0x11111111
+	MOV	EAX,[EBP-24]
+	MOV	BYTE [EAX], 0x35
+	MOV	EAX,[EBP-20]
+	MOV	BYTE [EAX], 0x35
+	MOV	EAX,[EBP-16]
+	MOV	BYTE [EAX], 0x35
+	MOV	EAX,[EBP-12]
+	MOV	BYTE [EAX], 0x35
+	MOV	EAX,[EBP-8]
+	MOV	BYTE [EAX], 0x35
+	MOV	EAX,[EBP-4]
+	MOV	BYTE [EAX], 0x35
+	MOV	DWORD [EBP-48],0x22222222
+	MOVZX	EAX,BYTE [EBP-40]
+	MOV	[EBP-41],AL
+	MOV	EAX,[EBP-24]
+	MOVZX	EBX,BYTE [EBP-40]
+	MOV	[EAX],BL
+	MOV	EAX,[EBP-20]
+	MOVZX	EBX,BYTE [EBP-40]
+	MOV	[EAX],BL
+	MOV	EAX,[EBP-16]
+	MOVZX	EBX,BYTE [EBP-40]
+	MOV	[EAX],BL
+	MOV	EAX,[EBP-12]
+	MOVZX	EBX,BYTE [EBP-40]
+	MOV	[EAX],BL
+	MOV	EAX,[EBP-8]
+	MOVZX	EBX,BYTE [EBP-40]
+	MOV	[EAX],BL
+	MOV	EAX,[EBP-4]
+	MOVZX	EBX,BYTE [EBP-40]
+	MOV	[EAX],BL
+	MOV	DWORD [EBP-48],0x33333333
+	MOV	EAX,[EBP-32]
+	MOV	EBX,[EBP-28]
+	MOVZX	ECX,BYTE [EAX]
+	MOV	[EBX],CL
+	MOV	EBX,[EBP-24]
+	MOVZX	ECX,BYTE [EAX]
+	MOV	[EBX],CL
+	MOV	EBX,[EBP-20]
+	MOVZX	ECX,BYTE [EAX]
+	MOV	[EBX],CL
+	MOV	EBX,[EBP-16]
+	MOVZX	ECX,BYTE [EAX]
+	MOV	[EBX],CL
+	MOV	EBX,[EBP-12]
+	MOVZX	ECX,BYTE [EAX]
+	MOV	[EBX],CL
+	MOV	EBX,[EBP-8]
+	MOVZX	ECX,BYTE [EAX]
+	MOV	[EBX],CL
+	MOV	EBX,[EBP-4]
+	MOVZX	ECX,BYTE [EAX]
+	MOV	[EBX],CL
+	MOV	DWORD [EBP-48],0x44444444
+	LEA	EAX,[EBP-48]
+	MOV	EBX,[EBP-28]
+	MOV	[EBX],AL
+	MOV	EBX,[EBP-24]
+	MOV	[EBX],AL
+	MOV	EBX,[EBP-20]
+	MOV	[EBX],AL
+	MOV	EBX,[EBP-16]
+	MOV	[EBX],AL
+	MOV	EBX,[EBP-12]
+	MOV	[EBX],AL
+	MOV	EBX,[EBP-8]
+	MOV	[EBX],AL
+	MOV	EBX,[EBP-4]
+	MOV	[EBX],AL
+	MOV	DWORD [EBP-48],0x55555555
+	LEA	EAX,[EBP-56]
+	MOV	EBX,[EBP-28]
+	MOVZX	ECX,BYTE [EAX+4]
+	MOV	[EBX],CL
+	MOV	EBX,[EBP-24]
+	MOVZX	ECX,BYTE [EAX+4]
+	MOV	[EBX],CL
+	MOV	EBX,[EBP-20]
+	MOVZX	ECX,BYTE [EAX+4]
+	MOV	[EBX],CL
+	MOV	EBX,[EBP-16]
+	MOVZX	ECX,BYTE [EAX+4]
+	MOV	[EBX],CL
+	MOV	EBX,[EBP-12]
+	MOVZX	ECX,BYTE [EAX+4]
+	MOV	[EBX],CL
+	MOV	EBX,[EBP-8]
+	MOVZX	ECX,BYTE [EAX+4]
+	MOV	[EBX],CL
+	MOV	EBX,[EBP-4]
+	MOVZX	ECX,BYTE [EAX+4]
+	MOV	[EBX],CL
+	MOV	DWORD [EBP-48],0x66666666
+	LEA	EAX,[EBP-56]
+	MOVSX	EBX,BYTE [EAX+4]
+	MOV	[EBP-48], EBX
+	LEA	EAX,[EBP-56]
+	MOV	BYTE [EAX+4],0xae
+	MOV	DWORD [EBP-48],0x77777777
+	MOV	EAX,[EBP-60]
+	MOV	[EBP-48],EAX
+	MOV	EAX,[EBP-60]
+	ADD	EAX,4
+	MOV	[EBP-48],EAX
+	MOV	DWORD [EBP-48],0x77777777
+	MOV	EAX,[EBP-60]
+	MOV	[EBP-48],EAX
+	LEA	EAX,[EBP-60]
+	MOV	EAX,[EAX]
+	MOV	[EBP-48],EAX
+	MOV	DWORD [EBP-48],0x88888888
+	MOV	EAX,[EBP-64]
+	MOV	EAX,[EAX+20]
+	MOV	EBX,[EAX+4]
+	MOV	[EBP-48],EBX
+	MOV	DWORD [EBP-48],0x88888888
+	MOV	EAX,[EBP-64]
+	MOV	EAX,[EAX+20]
+	ADD	EAX,4
+	MOV	[EBP-48],EAX
+	MOV	DWORD [EBP-48],0x88888888
+	MOV	EAX,[EBP-64]
+	ADD	EAX,12
+	MOV	[EBP-48],EAX
+	MOV	DWORD [EBP-48],0x88888888
+	MOV	EAX,[EBP-64]
+	MOV	EAX,[EAX+12]
+	MOV	[EBP-48],EAX
+	MOV	DWORD [EBP-48],0x99999999
+                               
+	CALL	ffff
+	MOV	EBX,[EBP-28]
+	MOV	[EBX],AL
+	MOV	EBX,[EBP-24]
+	MOV	[EBX],AL
+	MOV	EBX,[EBP-20]
+	MOV	[EBX],AL
+	MOV	EBX,[EBP-16]
+	MOV	[EBX],AL
+	MOV	EBX,[EBP-12]
+	MOV	[EBX],AL
+	MOV	EBX,[EBP-8]
+	MOV	[EBX],AL
+	MOV	EBX,[EBP-4]
+	MOV	[EBX],AL
+	MOV	DWORD [EBP-48],0x11111111
+                               
+	CALL	ffff
+	MOV	EBX,[EBP-4]
+	MOV	[EBX],AL
+	LEAVE
+	RET
+
+func_:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0xc
+                  
+	MOV	EAX,[EBP-12]
+	MOV	EBX,[EBP-8]
+	MOV	[EAX],EBX
+	MOV	EBX,[EBP-4]
+	MOV	[EAX+4],EBX
+	LEAVE
+	RET
+
+func11:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x10
+                 
+	SUB	ESP,0xc
+                  
+	MOV	EAX,[EBP-4]
+	MOV	[ESP],EAX
+	MOV	EAX,[EBP-8]
+	MOV	[ESP+4],EAX
+	MOVZX	EAX,BYTE [EBP-13]
+	MOV	[ESP+8],AL
+	CALL	mytest
+	ADD	ESP,0xc
+	MOV	[EBP-12],EAX
+	LEAVE
+	RET
+
+func12:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x10
+                 
+	SUB	ESP,0xc
+                  
+	MOV	EAX,[EBP-4]
+	MOV	[ESP],EAX
+	SUB	ESP,0xc
+                  
+	MOV	DWORD [EBP-4],0xbeaf
+	MOV	DWORD [ESP],0xbeaf
+	MOV	EAX,[EBP-8]
+	MOV	[ESP+4],EAX
+	MOVZX	EAX,BYTE [EBP-13]
+	MOV	[ESP+8],AL
+	CALL	mytest
+	ADD	ESP,0xc
+	MOV	[ESP+4],EAX
+	MOVZX	EAX,BYTE [EBP-13]
+	MOV	[ESP+8],AL
+	CALL	mytest
+	ADD	ESP,0xc
+	MOV	[EBP-12],EAX
+	LEAVE
+	RET
+
+func13:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+	MOV	DWORD [EBP+12],0x4
+	MOV	DWORD [EBP-8],0xa
+	LEAVE
+	RET
+
+func14:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+	MOV	DWORD [EBP+12],0x4
+	LEAVE
+	RET
+
+func15:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+	MOV	EAX,[EBP-4]
+	MOV	EBX,[EAX]
+	MOV	[EBP-8],EBX
+	MOV	EAX,[EBP-4]
+	MOV	EAX,[EBP-4]
+	MOV	[EBP-8],EAX
+	MOV	EAX,[EBP-4]
+	MOV	[EBP-8],EAX
+	LEAVE
+	RET
+
+func16:
+	PUSH	EBP
+	MOV	EBP,ESP
+                               
+	POP	EBP
+	RET
+
+func17:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x14
+                 
+	MOV	DWORD [EBP+8],0x4
+	LEA	EAX,[EBP+8]
+	MOV	[EBP-12],EAX
+                               
+	CALL	ffff
+	SUB	ESP,0x8
+                  
+	MOV	DWORD [ESP],0xa
+	MOV	EAX,[EBP-12]
+	MOV	EBX,[EAX]
+	MOV	[ESP+4],EBX
+	CALL	func16
+	ADD	ESP,0x8
+	SUB	ESP,0x8
+                  
+	LEA	EAX,[EBP-20]
+	MOV	[ESP],EAX
+	MOV	DWORD [ESP+4],0xa
+	CALL	func14
+	ADD	ESP,0x8
+	SUB	ESP,0x8
+                  
+	LEA	EAX,[EBP-20]
+	MOV	[ESP],EAX
+	MOV	DWORD [ESP+4],0xa
+	CALL	func14
+	ADD	ESP,0x8
+	MOV	EBX,[EAX]
+	MOV	[EBP-8],EBX
+	MOV	EBX,[EAX+4]
+	MOV	[EBP-4],EBX
+	LEAVE
+	RET
+
+func18:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+	MOV	EAX,[EBP-4]
+	MOV	EBX,[EAX]
+	MOV	[EBP-8],EBX
+	MOV	EAX,[EBP-4]
+	MOV	EAX,[EBP-4]
+	MOV	[EBP-8],EAX
+	MOV	EAX,[EBP-4]
+	MOV	[EBP-8],EAX
+	LEAVE
+	RET
+
+func19:
+	PUSH	EBP
+	MOV	EBP,ESP
+                               
+	POP	EBP
+	RET
+
+func20:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x18
+                 
+	SUB	ESP,0x14
+                 
+	LEA	EAX,[EBP-8]
+	MOV	[ESP],EAX
+	LEA	EAX,[EBP-12]
+	MOV	[ESP+4],EAX
+	LEA	EAX,[EBP-16]
+	MOV	[ESP+8],EAX
+	LEA	EAX,[EBP-20]
+	MOV	[ESP+12],EAX
+	LEA	EAX,[EBP-24]
+	MOV	[ESP+16],EAX
+	CALL	func19
+	ADD	ESP,0x14
+	MOV	[EBP-4],EAX
+	LEAVE
+	RET
+
+func21:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+	MOV	DWORD [EBP-4],0x12721e0
+	MOV	DWORD [EBP-8],0xdeadbeaf
+	SUB	ESP,0x8
+                  
+	MOV	EAX,[EBP-4]
+	MOV	[ESP],EAX
+	MOV	EAX,[EBP-8]
+	MOV	[ESP+4],EAX
+	CALL	printf
+	ADD	ESP,0x8
+	LEAVE
+	RET
+
+test_initializer:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x148
+                
+	MOV	DWORD [EBP-4],0xa
+	MOV	EAX,[EBP-4]
+	MOV	[EBP-8],EAX
+	MOV	DWORD [EBP-80],0xbeaf
+	MOV	DWORD [EBP-52],0x3
+	MOV	DWORD [EBP-72],0x6
+	MOV	DWORD [EBP-68],0x39
+	MOV	DWORD [EBP-64],0x38
+	MOV	DWORD [EBP-60],0x38
+	MOV	DWORD [EBP-44],0x6
+	MOV	DWORD [EBP-40],0x7
+	MOV	DWORD [EBP-36],0x8
+	MOV	DWORD [EBP-32],0x9
+	MOV	DWORD [EBP-28],0xa
+	MOV	DWORD [EBP-100],0x7
+	MOV	DWORD [EBP-96],0x8
+	MOV	DWORD [EBP-92],0x1
+	MOV	DWORD [EBP-88],0x2
+	MOV	DWORD [EBP-84],0x3
+	MOV	DWORD [EBP-124],0x7
+	MOV	DWORD [EBP-120],0x8
+	MOV	DWORD [EBP-116],0x1
+	MOV	DWORD [EBP-112],0x2
+	MOV	DWORD [EBP-108],0x3
+	MOV	BYTE [EBP-130],0x61
+	MOV	BYTE [EBP-129],0x62
+	MOV	DWORD [EBP-172],0x1
+	MOV	DWORD [EBP-168],0x2
+	MOV	DWORD [EBP-208],0x4
+	MOV	DWORD [EBP-212],0x5
+	MOV	DWORD [EBP-220],0x1
+	MOV	BYTE [EBP-216],0x32
+	MOV	DWORD [EBP-232],0x1
+	MOV	BYTE [EBP-228],0x2
+	MOV	DWORD [EBP-232],0x3
+	MOV	DWORD [EBP-224],0x5
+	MOV	DWORD [EBP-284],0x3
+	MOV	DWORD [EBP-304],0x6
+	MOV	DWORD [EBP-300],0x2d
+	MOV	DWORD [EBP-328],0x1
+	MOV	DWORD [EBP-324],0x3
+	MOV	DWORD [EBP-320],0x4
+	MOV	DWORD [EBP-316],0x5
+	LEAVE
+	RET
+
+init2:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x24
+                 
+	MOV	DWORD [EBP-16],0x2
+	MOV	DWORD [EBP-12],0x3
+	MOV	DWORD [EBP-8],0x4
+	MOV	DWORD [EBP-36],0x2
+	MOV	DWORD [EBP-32],0x3
+	MOV	DWORD [EBP-28],0x4
+	LEAVE
+	RET
+
+func23:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x1c
+                 
+	MOV	EAX,[EBP-1]
+	LEA	EBX,[EBP-1]
+	INC	BYTE [EBX]
+	MOV	EAX,[EBP-8]
+	LEA	EBX,[EBP-8]
+	INC	DWORD [EBX]
+	MOV	EAX,[EBP-12]
+	LEA	EBX,[EBP-12]
+	INC	DWORD [EBX]
+	MOV	EAX,[EBP-16]
+	LEA	EBX,[EBP-16]
+	INC	DWORD [EBX]
+	MOV	EAX,[EBP-20]
+	LEA	EBX,[EBP-20]
+	INC	DWORD [EBX]
+	MOV	EAX,[EBP-20]
+	MOV	EBX,[EAX]
+	MOV	EAX,[EBP-20]
+	INC	BYTE [EAX]
+	MOV	EAX,[EBP-24]
+	LEA	EBX,[EBP-24]
+	ADD	DWORD [EBX],4
+	MOV	EAX,[EBP-28]
+	LEA	EBX,[EBP-28]
+	ADD	DWORD [EBX],8
+	MOV	EAX,[EBP-24]
+	LEA	EBX,[EBP-24]
+	ADD	DWORD [EBX],4
+	MOV	EAX,[EAX]
+	MOV	[EBP-16],EAX
+	MOV	DWORD [EBP-16],0xfff
+	MOV	EAX,[EBP-20]
+	LEA	EBX,[EBP-20]
+	INC	DWORD [EBX]
+	MOV	EAX,[EAX]
+	MOV	[EBP-1],AL
+	MOV	EAX,[EBP-20]
+	MOV	EBX,[EAX]
+	MOV	EAX,[EBP-20]
+	INC	BYTE [EAX]
+	MOV	[EBP-1],BL
+	LEAVE
+	RET
+
+func24:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0xc
+                  
+	MOV	EAX,[EBP-4]
+	MOV	[EBP-8],EAX
+	LEA	EAX,[EBP-12]
+	MOV	EAX,[EAX]
+	LEAVE
+	RET
+
+func25:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0xc
+                  
+	LEA	EAX,[EBP-8]
+	DEC	DWORD [EAX]
+	MOV	EAX,[EBP-8]
+	MOV	[EBP-4],EAX
+	MOV	EAX,[EBP-12]
+	LEA	EBX,[EBP-12]
+	DEC	DWORD [EBX]
+	LEA	EAX,[EBP-8]
+	DEC	DWORD [EAX]
+	MOV	EAX,[EBP-12]
+	LEA	EBX,[EBP-12]
+	DEC	DWORD [EBX]
+	MOV	[EBP-4],EAX
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	DEC	DWORD [EBX]
+	MOV	DWORD [EBP-4],0x4
+	LEAVE
+	RET
+
+func26:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0xc
+                  
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	INC	DWORD [EBX]
+	MOV	[EBP-8],EAX
+	MOV	EAX,[EBP-4]
+	MOV	[EBP-12],EAX
+	LEAVE
+	RET
+
+func27:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0xc
+                  
+	MOVSX	EAX,BYTE [EBP-1]
+	NEG	EAX
+	MOV	[EBP-2],AL
+	MOV	EAX,[EBP-8]
+	NEG	EAX
+	MOV	[EBP-12],EAX
+	MOVSX	EAX,BYTE [EBP-1]
+	NEG	EAX
+	MOV	[EBP-12],EAX
+	LEAVE
+	RET
+
+func28:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0xc
+                  
+	MOVSX	EAX,BYTE [EBP-1]
+	NOT	EAX
+	MOV	[EBP-2],AL
+	MOV	EAX,[EBP-8]
+	NOT	EAX
+	MOV	[EBP-12],EAX
+	MOVSX	EAX,BYTE [EBP-1]
+	NOT	EAX
+	MOV	[EBP-12],EAX
+	LEAVE
+	RET
+
+func29:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x10
+                 
+	CMP	WORD [EBP-10],0
+	SETE	AL
+	MOVZX	EAX,AL
+	MOV	[EBP-1],AL
+	CMP	BYTE [EBP-1],0
+	SETE	AL
+	MOVZX	EAX,AL
+	MOV	[EBP-8],EAX
+	MOV	EAX,[EBP-16]
+	CMP	BYTE [EAX],0
+	SETE	AL
+	MOVZX	EAX,AL
+	MOV	[EBP-8],EAX
+	LEAVE
+	RET
+
+func30:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x20
+                 
+	MOVSX	EAX,BYTE [EBP-2]
+	CMP	BYTE [EBP-1],AL
+	SETG	AL
+	MOVZX	EAX,AL
+	MOV	[EBP-1],AL
+	MOVZX	EAX,BYTE [EBP-4]
+	CMP	BYTE [EBP-3],AL
+	SETB	AL
+	MOVZX	EAX,AL
+	MOV	[EBP-8],EAX
+	MOV	EAX,[EBP-12]
+	CMP	DWORD [EBP-8],EAX
+	SETLE	AL
+	MOVZX	EAX,AL
+	MOV	[EBP-8],EAX
+	MOVSX	EAX,WORD [EBP-24]
+	CMP	WORD [EBP-22],AX
+	SETGE	AL
+	MOVZX	EAX,AL
+	MOV	[EBP-8],EAX
+	MOV	EAX,[EBP-20]
+	CMP	DWORD [EBP-16],EAX
+	SETE	AL
+	MOVZX	EAX,AL
+	MOV	[EBP-8],EAX
+	MOVZX	EAX,WORD [EBP-28]
+	CMP	WORD [EBP-26],AX
+	SETNE	AL
+	MOVZX	EAX,AL
+	MOV	[EBP-8],EAX
+	LEAVE
+	RET
+
+func31:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x20
+                 
+	MOVSX	EAX,BYTE [EBP-2]
+	MOVSX	EBX,BYTE [EBP-1]
+	ADD	EBX, EAX
+	MOV	[EBP-1],BL
+	MOV	DWORD [EBP-32],0x1111
+	MOV	EAX,[EBP-12]
+	MOV	EBX,[EBP-8]
+	ADD	EBX, EAX
+	MOV	[EBP-8],EBX
+	MOV	DWORD [EBP-32],0x2222
+	MOVZX	EAX,BYTE [EBP-4]
+	MOVZX	EBX,BYTE [EBP-3]
+	SUB	EBX, EAX
+	MOV	[EBP-8],EBX
+	MOV	DWORD [EBP-32],0x3333
+	MOV	EAX,[EBP-12]
+	MOV	EBX,[EBP-8]
+	SUB	EBX, EAX
+	MOV	[EBP-8],EBX
+	MOV	DWORD [EBP-32],0x4444
+	MOV	EAX,[EBP-12]
+	MOV	EBX,[EBP-8]
+	IMUL	EBX, EAX
+	MOV	[EBP-8],EBX
+	MOV	DWORD [EBP-32],0x5555
+	MOV	EAX,[EBP-20]
+	MOV	EBX,[EBP-16]
+	MUL	EBX, EAX
+	MOV	[EBP-16],EBX
+	MOV	DWORD [EBP-32],0x6666
+	MOVZX	EAX,WORD [EBP-28]
+	MOVZX	EBX,WORD [EBP-26]
+	AND	EBX, EAX
+	MOV	[EBP-8],EBX
+	MOV	DWORD [EBP-32],0x7777
+	MOVSX	EAX,BYTE [EBP-2]
+	MOVSX	EBX,BYTE [EBP-1]
+	OR	EBX, EAX
+	MOV	[EBP-1],BL
+	MOV	DWORD [EBP-32],0x8888
+	MOVSX	EAX,WORD [EBP-24]
+	MOVSX	EBX,WORD [EBP-22]
+	XOR	EBX, EAX
+	MOV	[EBP-8],EBX
+	MOV	DWORD [EBP-32],0x9999
+	MOV	EAX,[EBP-12]
+	MOV	EBX,[EBP-8]
+	SAR	EBX, EAX
+	MOV	[EBP-8],EBX
+	MOV	DWORD [EBP-32],0x0
+	MOV	EAX,[EBP-20]
+	MOV	EBX,[EBP-16]
+	SHL	EBX, EAX
+	MOV	[EBP-8],EBX
+	LEAVE
+	RET
+
+func32:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x20
+                 
+	MOV	EAX,[EBP-22]
+	LEA	EBX,[EBP-22]
+	INC	WORD [EBX]
+	MOV	EDX, 0
+	CDQ
+	MOVSX	EBX,WORD [EBP-24]
+	IDIV	EBX
+	MOV	[EBP-8],EAX
+	MOV	DWORD [EBP-32],0x1111
+	MOV	EDX, 0
+	MOVZX	EAX,WORD [EBP-26]
+	MOVZX	EBX,WORD [EBP-28]
+	DIV	EBX
+	MOV	[EBP-8],EAX
+	MOV	DWORD [EBP-32],0x2222
+	MOV	EDX, 0
+	MOV	EAX,[EBP-16]
+	MOV	EBX,[EBP-20]
+	DIV	EBX
+	MOV	[EBP-8],EDX
+	LEAVE
+	RET
+
+func33:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x20
+                 
+	MOV	EDX, 0
+	MOV	EAX,[EBP-8]
+	CDQ
+	MOVSX	EBX,WORD [EBP-24]
+	IDIV	EBX
+	MOV	[EBP-8],EAX
+	MOV	DWORD [EBP-32],0x1111
+	MOV	EDX, 0
+	MOV	EAX,[EBP-8]
+	CDQ
+	MOVZX	EBX,WORD [EBP-28]
+	IDIV	EBX
+	MOV	[EBP-8],EAX
+	MOV	DWORD [EBP-32],0x2222
+	MOV	EDX, 0
+	MOV	EAX,[EBP-8]
+	CDQ
+	MOV	EBX,[EBP-20]
+	IDIV	EBX
+	MOV	[EBP-8],EDX
+	LEAVE
+	RET
+
+func34:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+	CMP	DWORD [EBP-8],0
+	JE	L2
+	CMP	DWORD [EBP-4],0
+	JE	L2
+L1:
+	MOV	EAX,1
+	JMP	L3
+L2:
+	MOV	EAX,0
+L3:
+	MOV	[EBP-4],EAX
+	CMP	DWORD [EBP-8],0
+	JNE	L5
+	CMP	DWORD [EBP-4],0
+	JNE	L5
+L4:
+	MOV	EAX,0
+	JMP	L6
+L5:
+	MOV	EAX,1
+L6:
+	MOV	[EBP-4],EAX
+	LEAVE
+	RET
+
+func35:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x10
+                 
+	CMP	DWORD [EBP-8],0
+	JE	L1
+	MOV	EDX,[EBP-12]
+	JMP	L2
+L1:
+	MOVSX	EDX,BYTE [EBP-13]
+L2:
+	MOV	[EBP-4],EDX
+	LEAVE
+	RET
+
+func36:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x14
+                 
+	MOV	EAX,[EBP-16]
+	MOV	[EBP-8],EAX
+	MOV	EAX,[EBP-12]
+	MOV	[EBP-4],EAX
+	CMP	DWORD [EBP-20],0
+	JE	L1
+	LEA	EDX,[EBP-8]
+	JMP	L2
+L1:
+	LEA	EDX,[EBP-16]
+L2:
+	MOV	EAX,[EDX]
+	MOV	[EBP-8],EAX
+	MOV	EAX,[EDX+4]
+	MOV	[EBP-4],EAX
+	LEAVE
+	RET
+
+func37:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x4
+                  
+	CMP	DWORD [EBP-4],0
+	JE	L1
+	CMP	DWORD [EBP-4],0
+	JE	L2
+	MOV	DWORD [EBP-4],0x1
+	JMP	L3
+L2:
+	MOV	DWORD [EBP-4],0x2
+L3:
+	JMP	L4
+L1:
+	MOV	DWORD [EBP-4],0x4
+L4:
+	LEAVE
+	RET
+
+func38:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x4
+                  
+L1:
+	CMP	DWORD [EBP-4],0
+	JE	L2
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	INC	DWORD [EBX]
+	JMP	L1
+L2:
+	LEAVE
+	RET
+
+func39:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x4
+                  
+L1:
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	INC	DWORD [EBX]
+L3:
+	CMP	DWORD [EBP-4],0
+	JNE	L1
+L2:
+	LEAVE
+	RET
+
+func40:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+	MOV	DWORD [EBP-8],0x0
+L1:
+	CMP	DWORD [EBP-4],0
+	JE	L2
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	INC	DWORD [EBX]
+L3:
+	MOV	EAX,[EBP-8]
+	LEA	EBX,[EBP-8]
+	INC	DWORD [EBX]
+	JMP	L1
+L2:
+	LEAVE
+	RET
+
+func41:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+L1:
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	INC	DWORD [EBX]
+	JMP	L1
+L2:
+	LEAVE
+	RET
+
+func42:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+	MOV	DWORD [EBP-8],0x0
+L1:
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	INC	DWORD [EBX]
+	JMP	L1
+L2:
+	LEAVE
+	RET
+
+func43:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+	MOV	DWORD [EBP-8],0x0
+L1:
+	CMP	DWORD [EBP-4],0
+	JE	L2
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	INC	DWORD [EBX]
+	JMP	L1
+L2:
+	LEAVE
+	RET
+
+func44:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+L1:
+	CMP	DWORD [EBP-4],0
+	JE	L2
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	INC	DWORD [EBX]
+	JMP	L1
+L2:
+	LEAVE
+	RET
+
+func45:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+L1:
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	INC	DWORD [EBX]
+L3:
+	MOV	EAX,[EBP-8]
+	LEA	EBX,[EBP-8]
+	INC	DWORD [EBX]
+	JMP	L1
+L2:
+	LEAVE
+	RET
+
+func46:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+	MOV	DWORD [EBP-8],0x0
+L1:
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	INC	DWORD [EBX]
+L3:
+	MOV	EAX,[EBP-8]
+	LEA	EBX,[EBP-8]
+	INC	DWORD [EBX]
+	JMP	L1
+L2:
+	LEAVE
+	RET
+
+func47:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+L1:
+	CMP	DWORD [EBP-4],0
+	JE	L2
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	INC	DWORD [EBX]
+L3:
+	MOV	EAX,[EBP-8]
+	LEA	EBX,[EBP-8]
+	INC	DWORD [EBX]
+	JMP	L1
+L2:
+	LEAVE
+	RET
+
+func48:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+L1:
+	MOV	EAX,[EBP-8]
+	CMP	DWORD [EBP-4],EAX
+	SETB	AL
+	MOVZX	EAX,AL
+	CMP	EAX,0
+	JE	L2
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	INC	DWORD [EBX]
+L3:
+	MOV	EAX,[EBP-8]
+	LEA	EBX,[EBP-8]
+	INC	DWORD [EBX]
+	JMP	L1
+L2:
+	LEAVE
+	RET
+
+func49:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+L1:
+	MOV	EAX,[EBP-8]
+	CMP	DWORD [EBP-4],EAX
+	SETB	AL
+	MOVZX	EAX,AL
+	CMP	EAX,0
+	JE	L2
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	INC	DWORD [EBX]
+	JMP	out
+L3:
+	MOV	EAX,[EBP-8]
+	LEA	EBX,[EBP-8]
+	INC	DWORD [EBX]
+	JMP	L1
+L2:
+out:
+	MOV	EAX,[EBP-4]
+	LEA	EBX,[EBP-4]
+	INC	DWORD [EBX]
+	LEAVE
+	RET
+
+func50:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+L1:
+	MOV	EAX,[EBP-4]
+	CMP	DWORD [EBP-8],EAX
+	SETB	AL
+	MOVZX	EAX,AL
+	CMP	EAX,0
+	JE	L2
+	JMP	L3
+L3:
+	MOV	EAX,[EBP-8]
+	LEA	EBX,[EBP-8]
+	INC	DWORD [EBX]
+	JMP	L1
+L2:
+	LEAVE
+	RET
+
+func51:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+L1:
+	CMP	DWORD [EBP-8],0
+	JE	L2
+	JMP	L1
+	JMP	L1
+L2:
+	LEAVE
+	RET
+
+func52:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x8
+                  
+L1:
+	JMP	L3
+L3:
+	CMP	DWORD [EBP-8],0
+	JNE	L1
+L2:
+	LEAVE
+	RET
+
+func53:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x4
+                  
+	MOV	EAX,[EBP-4]
+L7:
+	CMP	EAX, 1
+	JNE	L8
+	JMP	L3
+L8:
+	CMP	EAX, 2
+	JNE	L9
+	JMP	L4
+L9:
+	CMP	EAX, 3
+	JNE	L10
+	JMP	L5
+L10:
+	JMP	L6
+	JMP	L2
+L3:
+L4:
+L5:
+	LEA	EAX,[EBP-4]
+	INC	DWORD [EAX]
+L6:
+	MOV	EAX,[EBP-4]
+	MOV	EBX,[EBP-4]
+	ADD	EBX, EAX
+	MOV	[EBP-4],EBX
+L2:
+	LEAVE
+	RET
+
+func54:
+	PUSH	EBP
+	MOV	EBP,ESP
+	SUB	ESP,0x4
+                  
+	MOV	EAX,[EBP-4]
+L7:
+	CMP	EAX, 1
+	JNE	L8
+	JMP	L3
+L8:
+	CMP	EAX, 2
+	JNE	L9
+	JMP	L4
+L9:
+	CMP	EAX, 3
+	JNE	L10
+	JMP	L5
+L10:
+	JMP	L6
+	JMP	L2
+L3:
+L4:
+	JMP	L2
+L5:
+	LEA	EAX,[EBP-4]
+	INC	DWORD [EAX]
+L6:
+	MOV	EAX,[EBP-4]
+	MOV	EBX,[EBP-4]
+	ADD	EBX, EAX
+	MOV	[EBP-4],EBX
+L2:
+	LEAVE
+	RET
+
+
+
+
+t1.c:
+
+
+struct aa{
+   int s1;
+   int s2;
+   char s3;
+} aa;
+
+
+int mytest(int a, int b, char c)
+{
+    char b1[2][2];
+ 
+    char buf[16];
+    int i1;
+    struct aa a1;
+    struct aa *paa;	
+    short int qq;
+    short int ww;
+    
+    ww = qq = 0x0fff;
+    i1 = 1;
+    i1 = 1;
+    b1[1][i1] = 'a';	
+    b1[1][1] = 'a';	
+    buf[15] = '0';	
+    buf[i1] = '1';
+
+    a1.s2 = 0xdeadeaf;
+    a1.s1 = 0x1234567;
+    
+    paa = &a1;
+    paa->s1 = 0xaaa;
+    paa->s2 = 0xbbb;
+    (*paa).s3 = '0';
+
+    (*paa).s3 = '1';
+    
+    return 0;
+}
+
+void haha()
+{
+	long int l1;
+	int l2;
+	unsigned int ul1;
+	unsigned long int ul2;
+  short s1;
+  short s2;
+  unsigned short us1;
+  unsigned short us2;
+  char c1;
+  char c2;
+  unsigned char uc1;
+  unsigned char uc2;
+  
+  l1 = 0xdeadbeaf;
+  l1 = l2;
+  l1 = ul2;
+  ul1 = l2;
+  ul2 = l1;
+  
+  l1 = 0xdeadbeaf;
+  l1 = s1;
+  ul1 = s2;
+  ul1 = us1;
+  l1 = us1;
+  l1 = c1;
+  ul1 = c2;
+  ul1 = uc1;
+  l1 = uc1; 
+  s1 = c1;
+  us1 = c2;
+  us1 = uc1;
+  s1 = uc1; 
+    
+  c1 = c2;
+  c2 = uc1;
+  uc1 = uc2;
+  uc1 = c1;
+  s1 = s2;
+  us1 = s1;
+  s1 = us2;
+  us2 = us1;
+   
+ 
+  l1 = 0xdeadbeaf;
+  c1 = l1;
+  c1 = ul1;
+  uc1 = l1;
+  uc1 = ul1;
+  s1 = l1;
+  s1 = ul1;
+  us1 = l1;
+  us1 = ul1;
+  l1 = 0xdeadbeaf;
+  c1 = s1;
+  uc1 = s1;
+  c1 = us1;
+  uc1 = us1;
+}
+
+void haha2()
+{
+	char *pc;
+	char *pi;
+  short s;
+  char c;
+
+  c = pi;
+  s = pc;
+  c = pc;
+  s = pi;
+  pi = s;
+  pi = c;
+  pc = s;
+  pc = c;
+}
+
+void func()
+{
+	
+}
+
+typedef struct st{
+	int i;
+	char c;
+}st;
+
+typedef struct {
+	int i;
+	char c;
+	struct aa  a;
+	struct aa  *pa;	
+}stt;
+
+	
+void func2()
+{
+	st st1;
+	st st2;
+	char c;
+	
+	st1 = st2;
+	
+	st1.c = c;
+	st1.i = c;
+}
+
+
+void func3(a,b,c)
+int a; char b[]; char c;
+{
+	a = 1;
+	b[7] = 2;
+	c = 'c';
+}
+
+
+void func4(int a, char v, short b, char c)
+{
+	a = 1;
+	v = '0';
+	b = 2;
+	c = 'c';
+}
+
+void func5(struct aa mm, char v, int a)
+{
+	mm.s1 = 9;
+	v = mm.s1;
+	v = 'a';
+	a = 1;
+}
+
+
+void func6(char buf[100], char v, int a)
+{
+	char *p;
+	char c;
+	
+	v = 'a';
+	a = 1;
+	p[2] = 'x';  
+	(&c)[3] = 'y';  
+	buf[5] = 0;     
+}
+
+
+void func7()
+{
+	char * buf[10];
+	char c;
+	
+	buf[9][2] = 0xff;
+	c = buf[9][2];
+
+}
+
+void func8()
+{
+	st * buf[10];
+	st c;
+	
+	c = buf[9][2];
+
+}
+
+
+typedef struct {
+   int s1;
+   int s2;
+   char s3[11164];
+} s;
+
+void func9()
+{
+		s s1;
+		s s2;
+		
+		s1 = s2;
+}
+
+char ffff()
+{
+   return 'c';	
+}
+
+void func10()
+{
+  char *p1;
+  char *p2;
+  char *p3;
+  char *p4;
+  char *p5;
+  char *p6;
+  char *p7;
+  char *p8;
+  char buf[10];
+  int gap;
+  st s1;
+  st *p;
+  stt *px;
+  
+  *p1 = *p2 = *p3 = buf[1];	
+  gap = 0x11111111;
+  *p1 = *p2 = *p3 = *p4 = *p5 = *p6 = '5';
+  gap = 0x22222222;
+  *p1 = *p2 = *p3 = *p4 = *p5 = *p6 = buf[1] = buf[2];
+  gap = 0x33333333;
+  *p1 = *p2 = *p3 = *p4 = *p5 = *p6 = *p7 = *p8;
+  gap = 0x44444444;
+  *p1 = *p2 = *p3 = *p4 = *p5 = *p6 = *p7 = &gap;
+  gap = 0x55555555;
+  *p1 = *p2 = *p3 = *p4 = *p5 = *p6 = *p7 = (*(&s1)).c; 
+  gap = 0x66666666;
+  gap = (*(&s1)).c; 
+  (*(&s1)).c = 0xfae;
+  gap = 0x77777777;
+  gap = &(p->i);  
+  gap = &(p->c);  
+  gap = 0x77777777;
+  gap = &(*p);   
+  gap = *(&p);
+  gap = 0x88888888;
+  gap = px->pa->s2;
+  gap = 0x88888888;
+  gap = &(px->pa->s2);
+  gap = 0x88888888;
+  gap = &(px->a.s2);
+  gap = 0x88888888;
+  gap = px->a.s2;    
+  gap = 0x99999999;
+  *p1 = *p2 = *p3 = *p4 = *p5 = *p6 = *p7 = ffff();
+  gap = 0x11111111;
+  *p1 = ffff();
+}
+
+func_()
+{
+  st s1;
+  st *p;
+  
+  *p = s1;   	
+}
+
+int func11()
+{
+	int a,b;
+	int i;
+	char c;
+
+	i = mytest(a, b, c);
+
+	return i;
+}
+
+int func12()
+{
+	int a,b;
+	int i;
+	char c;
+
+	i = mytest(a, mytest(a=0xbeaf, b, c), c);
+
+	return i;
+}
+
+struct st func13(int a)
+{
+	 st s;
+   // s s1;  // should be error 
+	 a = 4;
+	 
+	 s.i = 10;
+	 return s;
+}
+
+
+st func14(int a)
+{
+	 st s;
+	 a = 4;
+	 
+	 return s;
+}
+
+func15()
+{
+   int *a;
+   int gap;
+	
+	 gap = *a;
+	 *a;
+   &(*a);   
+   &*a;
+   gap = &(*a); 
+   gap = &*a; 
+   
+}
+
+void func16(int a, int b)
+{
+	
+}
+
+typedef int INT32;
+INT32 func17(int a)
+{
+	 st s;
+	 a = 4;
+	 int *b;
+	 
+	 b = &a;
+	 
+	 ffff();
+	 func16(10, *b);
+	 func14(10);
+	 s = func14(10);
+	 return a;
+}
+
+
+func18()  // debug
+{
+   int *a;
+   int gap;
+	
+	 gap = *a;
+	 *a;
+   &(*a);   
+   &*a;
+   gap = &(*a); 
+   gap = &*a; 
+   
+}
+
+int func19(int *p1, int *p2, int *p3, int *p4, int *p5)
+{
+	return 10;
+}
+
+func20()
+{
+	int i;
+	int a,b,c,d,e;
+	
+	i = func19(&a,&b,&c,&d,&e);
+}
+
+int printf(char *format, ...);
+
+func21()
+{
+   char *f = "Hello, World! %x\n";  // TODO
+   int a;
+   
+   a = 0xdeadbeaf;
+   
+   printf(f, a);
+   	
+}
+
+/* 
+// TODO: global var initialize 
+int aaaa = 10;    // TODO
+//int bbbb = aaaa;  // error
+char ssss[] = "hello";
+char ssss1[10] = "hello2";
+
+*/
+
+void test_initializer()
+{
+  int aaaa = 10; 
+  int bbbb = aaaa;  
+  int AR[2][3][3] = {0xbeaf, [0][2][1] = 3, [0][0][2] = 6, 57, 56, 56, [1] = 6,7,8,9,10};
+  
+  struct {int a[2]; int b;} y[2] = {{.a[1] = 7, 8}, 1, 2, 3};
+
+  typedef struct {int a[2]; int b;} st;
+  st y2[2] = {{.a[1] = 7, 8}, 1, 2, 3};
+
+
+  //char c[2] = {'a', 'b', 'c'};   // error
+  char c[2] = {'a', 'b'};
+
+
+  typedef union {
+    int a[2];
+	int c[10];
+	int b;
+  } u;
+
+  //u u1 = {1,2,3};  // error 
+  u u1 = {1,2};
+  u u2 = {.a[1]=4, .c[0]=5};
+
+
+  struct w1 {int a; char b;} w = {1,'2'};
+
+  struct {struct w1 ww0, ww1; int d;} WW= {{1,2},{3},5};
+
+  int AR2[2][3][3] = {[0][2][1] = 3, [0][0][2] = 6, 45};
+  int AR3[2][2] = {1,3,{4, 5}};
+  
+  //char ssss[] = "hello";  // TODO
+  //char ssss1[10] = "hello2";   // TODO
+}
+
+
+void init2()
+{
+	//char str[2][4][2];
+	//char c, str2[2]; 
+	
+	int a[][2] ={{2,3},4};  
+  int b, b2[][2] ={{2,3},4};
+  
+ /* error 
+  char ch1[10];
+  char ch2[10];
+  ch1 = ch2;
+ */ 
+}
+
+
+int func23()
+{
+	 char c;
+	 int i;
+	 unsigned ui;
+	 long l;
+	 char *pc;
+	 long *pi;
+	 st *pst;
+	 
+	 c++;
+	 i++;
+	 ui++;
+	 l++;
+	 pc++;
+	 (*pc)++;
+	 pi++;
+	 pst++;
+	 l = *(pi++);	
+	 
+	 l = 0xfff;
+	 c = *pc++;
+	 c = (*pc)++;
+}
+
+int func24()
+{
+   int i;
+   int i2 = i;	
+   int a;
+   
+   *&a;
+}
+
+int func25()
+{
+	int i1,i2,i3;
+	
+	i1 = --i2,i3--;
+	i1 = (--i2,i3--);
+	i1--;
+	i1 = sizeof i1;
+}
+
+int func26()
+{
+	int i;
+	int i1 = i++;
+	int i2;
+	
+	i2 = +i;
+	
+}
+
+int func27()
+{
+  char c;
+  unsigned char uc;
+  int i;
+  unsigned int ui;
+  
+  uc = -c;
+  ui = -i;
+  ui = -c;	
+}
+
+int func28()
+{
+  char c;
+  unsigned char uc;
+  int i;
+  unsigned int ui;
+  
+  uc = ~c;
+  ui = ~i;
+  ui = ~c;	
+}
+
+int func29()
+{
+  char c;
+  unsigned char uc;
+  int i;
+  unsigned short us;
+  char *p;
+  	
+  c = !us;
+  i = !c;
+  i = !*p;
+}
+
+int func30()
+{
+  char c1, c2;
+  unsigned char uc1, uc2;
+  int i1,i2;
+  unsigned long ul1, ul2;
+  short s1,s2;
+  unsigned short us1,us2;
+  char *p;
+  	
+  c1 = c1 > c2;
+  i1 = uc1 < uc2;
+  i1 = i1 <= i2;
+  i1 = s1 >= s2;
+  i1 = ul1 == ul2;
+  i1 = us1 != us2;
+}
+
+int func31()
+{
+  char c1, c2;
+  unsigned char uc1, uc2;
+  int i1,i2;
+  unsigned long ul1, ul2;
+  short s1,s2;
+  unsigned short us1,us2;
+  int gap;
+  	
+  c1 = c1 + c2;
+  gap = 0x1111;
+  i1 = i1 + i2;
+  gap = 0x2222;
+  i1 = uc1 - uc2;
+  gap = 0x3333;
+  i1 = i1 - i2;
+  gap = 0x4444;
+  i1 = i1 * i2;
+  gap = 0x5555;
+  ul1 = ul1 * ul2;
+  gap = 0x6666;
+  i1 = us1 & us2;
+  gap = 0x7777;
+  c1 = c1 | c2;
+  gap = 0x8888;
+  i1 = s1 ^ s2;
+  gap = 0x9999;
+  i1 = i1 >> i2;
+  gap = 0x0000;
+  i1 = ul1 << ul2;
+}
+
+
+int func32()
+{
+  char c1, c2;
+  unsigned char uc1, uc2;
+  int i1,i2;
+  unsigned long ul1, ul2;
+  short s1,s2;
+  unsigned short us1,us2;
+  int gap;
+  	
+  i1 = s1++ / s2;
+  gap = 0x1111;
+  i1 = us1 / us2;
+  gap = 0x2222;
+  i1 = ul1 % ul2;
+}
+
+
+int func33()
+{
+  char c1, c2;
+  unsigned char uc1, uc2;
+  int i1,i2;
+  unsigned long ul1, ul2;
+  short s1,s2;
+  unsigned short us1,us2;
+  int gap;
+  	
+  i1 /= s2;
+  gap = 0x1111;
+  i1 /= us2;
+  gap = 0x2222;
+  i1 %= ul2;
+}
+
+int func34()
+{
+  int i;
+  int i2;
+  
+  i = (i2 && i); 	
+  
+  i = (i2 || i);	
+}
+
+int func35()
+{
+   int i,a;
+   int i1;
+   char c;
+   
+   i = (a? i1:c);	
+}
+
+int func36()
+{
+   st st1,st2;
+   int i;
+   
+   st1 = st2;
+   st1 = (i? st1:st2);	
+}
+
+int func37()
+{
+  int i;
+
+  if(i) 
+	  if(i) 
+	    i = 1; 
+	  else 
+	    i = 2;
+  else 
+    i = 4;
+  	
+}
+
+int func38()
+{
+  int i;
+
+  while(i) {
+    i++;
+  }
+}
+
+int func39()
+{
+  int i;
+
+  do {
+    i++;
+  }while(i);
+}
+
+int func40()
+{
+	int i1;
+	int i;
+	
+  for (i=0; i1; i++)
+  {
+  	i1++;
+  }	
+}
+
+int func41()
+{
+	int i1;
+	int i;
+	
+  for (; ;)
+  {
+  	i1++;
+  }	
+}
+
+int func42()
+{
+	int i1;
+	int i;
+	
+  for (i=0; ; )
+  {
+  	i1++;
+  }	
+}
+
+int func43()
+{
+	int i1;
+	int i;
+	
+  for (i=0; i1; )
+  {
+  	i1++;
+  }	
+}
+
+int func44()
+{
+	int i1;
+	int i;
+	
+  for (; i1; )
+  {
+  	i1++;
+  }	
+}
+
+int func45()
+{
+	int i1;
+	int i;
+	
+  for (;;i++)
+  {
+  	i1++;
+  }	
+}
+
+int func46()
+{
+	int i1;
+	int i;
+	
+  for (i=0; ; i++)
+  {
+  	i1++;
+  }	
+}
+
+int func47()
+{
+	int i1;
+	int i;
+	
+  for (; i1; i++)
+  {
+  	i1++;
+  }	
+}
+
+int func48()
+{
+	int i1;
+	int i;
+	
+  for (; i1<i; i++)
+  {
+  	i1++;
+  }	
+}
+
+int func49()
+{
+	int i1;
+	int i;
+	
+  for (; i1<i; i++)
+  {
+  	i1++;
+  	//if(i == i1)   // fix this
+  		goto out;
+  }	
+  
+out:  
+	i1++;
+}
+
+
+int func50()
+{
+	int i1;
+	int i;
+	
+  for (; i<i1; i++)
+  {
+    continue;
+  }	
+  
+}
+
+int func51()
+{
+	int i1;
+	int i;
+	
+  while(i)
+  {
+    continue;
+  }	
+  
+}
+
+int func52()
+{
+	int i1;
+	int i;
+	
+  do
+  {
+    continue;
+  }	while(i);
+  
+
+}
+
+int func53()
+{
+  int i;
+  
+  switch(i) {
+   	case 1:
+   	case 2:
+   	case 3:
+   		++i;
+   	default:
+   		i+=i;
+  };	
+	
+}
+
+int func54()
+{
+  int i;
+  
+  switch(i) {
+   	case 1:
+   	case 2:
+   		break;
+   	case 3:
+   		++i;
+   	default:
+   		i+=i;
+  };	
+	
+}
+
